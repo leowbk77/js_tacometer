@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tacômetro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+  <body>
+    
+    <div class="velocimetro">
+      <div class="bkgimg"></div>
+      <div class="bkgimg2"></div>
+
+      <div class="agulha" id="agulha">
+        <div class="agulha-head" id="agulhaHead"></div>
+        <div class="agulha-body"></div>
+      </div>
+
+      <div class="escala escala-1"></div>
+      <div class="escala escala-2"></div>
+      <div class="escala escala-3"></div>
+      <div class="escala escala-4"></div>
+      <div class="escala escala-5"></div>
+      <div class="escala escala-6"></div>
+      <div class="escala escala-7"></div>
+      <div class="escala escala-8"></div>
+      <div class="escala escala-9"></div>
+      <div class="escala escala-10"></div>
+      <div class="escala escala-11"></div>
+      <div class="escala escala-12"></div>
+      <div class="escala escala-13"></div>
+
+      <!-- 
+      <div class="escala escala-14"></div>
+      <div class="escala escala-15"></div>
+      <div class="escala escala-16"></div>
+      <div class="escala escala-17"></div>
+      <div class="escala escala-18"></div>
+      <div class="escala escala-19"></div>
+      -->
+      
+    </div>
+
+    <input type="range" id="velocidade" min="0" max="100" value="0" />
+
+    <div>
+      <div>
+        <input type="color" name="" id="markColor">
+        <p>Marcadores</p>
+      </div>
+      <div>
+        <input type="color" name="" id="agulhaColor">
+        <p>Agulha</p>
+      </div>
+    </div>
+
+</body>
+</html>
+<script>
+const agulha = document.getElementById("agulha");
+const slider = document.getElementById("velocidade");
+
+const agulhaHead = document.getElementById("agulhaHead");
+const agulhaColor = document.getElementById("agulhaColor");
+
+const marcadores = document.querySelectorAll(".escala");
+const marcadoresColor = document.getElementById("markColor");
+
+let atual = 0;
+let alvo = 0;
+
+// Define o valor maximo de input
+// atualmente usa o slider (limite max)
+// futuramente será o redline (RPM max)
+let escalaDeInput = 100;
+
+// altera a cor da agulha pelo input
+agulhaColor.addEventListener("input", () => {
+  agulhaHead.style.background = agulhaColor.value;
+});
+// altera a cor dos marcadores
+marcadoresColor.addEventListener("input", () => {
+  marcadores.forEach(element => {
+    element.style.background = marcadoresColor.value;
+  });
+});
+
+slider.addEventListener("input", () => {
+  alvo = parseInt(slider.value);
+});
+
+// atualiza a agulha a cada frame
+function atualizar() {
+  // suaviza usando easing tipo senoide (ease-out-ish)
+  let delta = alvo - atual;
+  atual += delta * 0.1;
+
+  // ângulo da agulha (de -90 a 90 graus)
+  // 180 total de angulo
+  // para encontrar o angulo entre os mostradores: (180 / n) <- n é o número de mostradores
+  // numero de mostradores -> (redline / 1000 + 1) <- redline é o RPM max;
+  let angulo = (atual / escalaDeInput) * 180 - 90;
+
+  agulha.style.transform = `rotate(${angulo}deg)`;
+
+  requestAnimationFrame(atualizar);
+}
+
+atualizar();
+</script>

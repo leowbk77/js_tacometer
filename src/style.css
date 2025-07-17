@@ -1,0 +1,155 @@
+.velocimetro {
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+  border: 10px solid #333;
+  position: relative;
+  margin: 50px auto;
+  transform: rotate(-65deg);
+}
+
+.bkgimg {
+  z-index: 0;
+
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  
+  border-radius: 50%;
+
+  background-image: url('./img/tabby.png');
+  background-position: center;
+  background-size: cover;
+  
+  transform: rotate(65deg);
+}
+
+.bkgimg2 {
+  z-index: 2;
+
+  position: absolute;
+  width: 250px;
+  height: 250px;
+
+  bottom: 50%;
+  left: 50%;
+  
+  border-radius: 50%;
+
+  background-image: url('./img/tabby.png');
+  background-position: center;
+  background-size: 300px 300px;
+  
+  transform: translate(-50%, 50%) rotate(65deg);
+}
+
+.agulha {
+  width: 4px;
+  height: 140px;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: rotate(-90deg); /* posição inicial */
+  transition: transform 0.1s ease-out;
+  z-index: 3;
+}
+
+.agulha-head {
+  background: red;
+
+  height: 30%;
+}
+
+.escala {
+  width: 4px;
+  height: 140px;
+  background: rgb(170, 248, 118);
+  position: absolute;
+  bottom: 150px;
+  left: 150px;
+  z-index: 1;
+  transform-origin: bottom center;
+}
+
+.escala-1 {
+  transform: rotate(90deg);
+}
+.escala-2 {
+  transform: rotate(75deg);
+
+}
+.escala-3 {
+  transform: rotate(60deg);
+
+}
+.escala-4 {
+  transform: rotate(45deg);
+
+}
+.escala-5 {
+  transform: rotate(30deg);
+
+}
+.escala-6 {
+  transform: rotate(15deg);
+
+}
+.escala-7 {
+  transform: rotate(0deg);
+
+}
+.escala-8 {
+  transform: rotate(-15deg);
+
+}
+.escala-9 {
+  transform: rotate(-30deg);
+
+}
+.escala-10 {
+  transform: rotate(-45deg);
+
+}
+.escala-11{
+  transform: rotate(-60deg);
+
+}
+.escala-12 {
+  transform: rotate(-75deg);
+
+}
+.escala-13 {
+  transform: rotate(-90deg);
+
+}
+.escala-14 {
+  transform: rotate(-40deg);
+
+}
+.escala-15 {
+  transform: rotate(-50deg);
+
+}
+.escala-16 {
+  transform: rotate(-60deg);
+
+}
+.escala-17 {
+  transform: rotate(-70deg);
+
+}
+.escala-18 {
+  transform: rotate(-80deg);
+
+}
+.escala-19 {
+  transform: rotate(-90deg);
+}
+
+input[type=range] {
+  width: 300px;
+  display: block;
+  margin: 20px auto;
+}
