@@ -6,7 +6,7 @@ const Needle = () => {
     
     return(
         <div className={style.needle} id={"agulha"}>
-            <div className={style.needleHead} id={"agulhaHead"}></div>
+            <div className={style.needleHead}></div>
             <div className={style.needleBody}></div>
         </div>
     );

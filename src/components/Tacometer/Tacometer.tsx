@@ -1,4 +1,4 @@
-import {PropsWithChildren} from "react";
+import { PropsWithChildren } from "react";
 /* 
 Angulo da agulha hardcoded temporariamente
 */
@@ -34,7 +34,7 @@ const Tacometer = ({redline, needleAngle}: Props) => {
                 <div className={style.bkgimg}></div>
 
                 <div className={style.needle} id={"agulha"} style={{transform: `rotate(${needleAngle}deg)`}}>
-                    <div className={style.needleHead} id={"agulhaHead"}></div>
+                    <div className={style.needleHead}></div>
                     <div className={style.needleBody}></div>
                 </div>
                 
