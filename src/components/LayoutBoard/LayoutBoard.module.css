@@ -36,6 +36,7 @@
     background-color: var(--mwRSMainGreen);
     color: black;
     margin: 0;
+    padding-left: .5rem;
 }
 
 .bottomInfo {
@@ -65,4 +66,6 @@
 
 .backgroundSelector {
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }

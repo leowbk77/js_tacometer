@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Tacometer from '../Tacometer/Tacometer';
+import InputRadioCheck from '../InputRadioCheck/InputRadioCheck';
 
 import style from './LayoutBoard.module.css';
 
@@ -19,8 +20,8 @@ const LayoutBoard = () => {
         setRpm(Number(e.target.value));
     };
 
-    const handleBackgroundChange = (e) => {
-        setBackground(e.target.value)
+    const handleBackgroundChange = (val) => {
+        setBackground(val)
     };
 
     return(
@@ -35,7 +36,9 @@ const LayoutBoard = () => {
             </div>
             <div className={style.bottom}>
                 <div className={style.bottomHead}>
-                    <h2 className={style.bottomHeadH2}>CONFIG</h2>
+                    <h2 className={style.bottomHeadH2}>
+                        <strong>CONFIG</strong>
+                    </h2>
                     <div className={style.bottomInfo}>
                         <p className={style.bottomInfoP}><strong>CAR: {car}</strong></p>
                         <p className={style.bottomInfoP}><strong>DRIVER: {driver}</strong></p>
@@ -43,32 +46,21 @@ const LayoutBoard = () => {
                     </div>
                 </div>
                 <div className={style.bottomConfigs}>
-                    <div className={style.configsColorPickers}>
-                        <input type="color" id="scalecolor" name="scalecolor" value={scalesColor} onChange={(e) => setScalesColor(e.target.value)}/>
-                        <label htmlFor="scalecolor"> Escales</label>
+                    <div>
+                        <div className={style.configsColorPickers}>
+                            <input type="color" id="scalecolor" name="scalecolor" value={scalesColor} onChange={(e) => setScalesColor(e.target.value)}/>
+                            <label htmlFor="scalecolor"> Escales</label>
+                        </div>
+                        <div className={style.configsColorPickers}>
+                            <input type="color" id="needlecolor" name="needlecolor" value={needleColor} onChange={(e) => setNeedleColor(e.target.value)}/>
+                            <label htmlFor="needlecolor"> Needle</label>
+                        </div>
                     </div>
-                    <div className={style.configsColorPickers}>
-                        <input type="color" id="needlecolor" name="needlecolor" value={needleColor} onChange={(e) => setNeedleColor(e.target.value)}/>
-                        <label htmlFor="needlecolor"> Needle</label>
-                    </div>
+                    
                     <div className={style.backgroundSelector}>
-                        <form>
-                            <fieldset>
-                                <legend>BACKGROUND</legend>
-                                <div>
-                                    <input type="radio" id="flames" name="flames" value="flames" checked={background === 'flames'} onChange={handleBackgroundChange}/>
-                                    <label htmlFor="flames">FLAMES</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="griffin" name="griffin" value="griffin" checked={background === 'griffin'} onChange={handleBackgroundChange}/>
-                                    <label htmlFor="griffin">GRIFFIN</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="tabby" name="tabby" value="tabby" checked={background === 'tabby'} onChange={handleBackgroundChange}/>
-                                    <label htmlFor="tabby">TABBY</label>
-                                </div>
-                            </fieldset>
-                        </form>
+                        <InputRadioCheck name="FLAMES" checked={background === 'flames'} value="flames" onChange={handleBackgroundChange}/>
+                        <InputRadioCheck name="TABBY" checked={background === 'tabby'} value="tabby" onChange={handleBackgroundChange}/>
+                        <InputRadioCheck name="GRIFFIN" checked={background === 'griffin'} value="griffin" onChange={handleBackgroundChange}/>
                     </div>
                 </div>
             </div>
