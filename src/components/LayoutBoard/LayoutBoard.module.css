@@ -1,0 +1,68 @@
+:root {
+    --mwRSMainGreen: #A5E245;
+    --mwRSSecondaryGreen: #3F571B;
+    --mwRSSecondaryDark: #2B3B13;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 720px;
+}
+
+.top {
+    display: flex;
+    height: 50%;
+}
+
+.topLeft {
+    width: 50%;
+}
+
+.topRight {
+    width: 50%;
+}
+
+.bottom {
+    padding: 0 5%;
+    margin: 0;
+}
+
+.bottomHead {
+    border-bottom: 10px dashed var(--mwRSMainGreen);
+}
+
+.bottomHeadH2 {
+    background-color: var(--mwRSMainGreen);
+    color: black;
+    margin: 0;
+}
+
+.bottomInfo {
+    background: repeating-linear-gradient(
+                -45deg,
+                var(--mwRSSecondaryGreen),
+                var(--mwRSSecondaryGreen) 10px,
+                var(--mwRSSecondaryDark) 10px,
+                var(--mwRSSecondaryDark) 20px
+                );
+    margin-bottom: .5rem;
+}
+
+.bottomInfoP {
+    margin: 0;
+    padding: .5rem;
+}
+
+.bottomConfigs {
+    border-bottom: 10px dashed var(--mwRSMainGreen);
+}
+
+.configsColorPickers {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.backgroundSelector {
+    margin-bottom: 10px;
+}
