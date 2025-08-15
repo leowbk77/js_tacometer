@@ -20,6 +20,11 @@ const LayoutBoard = () => {
         setRpm(Number(e.target.value));
     };
 
+    const handleRedlineChange = (e) => {
+        // tratamento de erro pendente
+        setRedlineVal(Number(e.target.value));
+    }
+
     const handleBackgroundChange = (val) => {
         setBackground(val)
     };
@@ -46,21 +51,27 @@ const LayoutBoard = () => {
                     </div>
                 </div>
                 <div className={style.bottomConfigs}>
-                    <div>
-                        <div className={style.configsColorPickers}>
-                            <input type="color" id="scalecolor" name="scalecolor" value={scalesColor} onChange={(e) => setScalesColor(e.target.value)}/>
-                            <label htmlFor="scalecolor"> Escales</label>
+                    <div className={style.bottomConfigsLayout}>
+                        <div className={style.needleAndScalesDiv}>
+                            <div className={style.configsColorPickers}>
+                                <input type="color" id="scalecolor" name="scalecolor" value={scalesColor} onChange={(e) => setScalesColor(e.target.value)}/>
+                                <label htmlFor="scalecolor"> Escales</label>
+                            </div>
+                            <div className={style.configsColorPickers}>
+                                <input type="color" id="needlecolor" name="needlecolor" value={needleColor} onChange={(e) => setNeedleColor(e.target.value)}/>
+                                <label htmlFor="needlecolor"> Needle</label>
+                            </div>
                         </div>
-                        <div className={style.configsColorPickers}>
-                            <input type="color" id="needlecolor" name="needlecolor" value={needleColor} onChange={(e) => setNeedleColor(e.target.value)}/>
-                            <label htmlFor="needlecolor"> Needle</label>
+                        <div className={style.backgroundSelector}>
+                            <InputRadioCheck name="FLAMES" checked={background === 'flames'} value="flames" onChange={handleBackgroundChange}/>
+                            <InputRadioCheck name="TABBY" checked={background === 'tabby'} value="tabby" onChange={handleBackgroundChange}/>
+                            <InputRadioCheck name="GRIFFIN" checked={background === 'griffin'} value="griffin" onChange={handleBackgroundChange}/>
                         </div>
                     </div>
-                    
-                    <div className={style.backgroundSelector}>
-                        <InputRadioCheck name="FLAMES" checked={background === 'flames'} value="flames" onChange={handleBackgroundChange}/>
-                        <InputRadioCheck name="TABBY" checked={background === 'tabby'} value="tabby" onChange={handleBackgroundChange}/>
-                        <InputRadioCheck name="GRIFFIN" checked={background === 'griffin'} value="griffin" onChange={handleBackgroundChange}/>
+                    <div className={style.bottomConfigsLayout2}>
+                        <input type="number" name="redlineinput" id="redlineinput" value={redlineVal} onChange={(e) => handleRedlineChange(e)}/>
+    
+                        <input type="range" name="redlineinputrange" id="redlineinputrange" min="7000" max="12000" step="1000" value={redlineVal} onChange={(e) => handleRedlineChange(e)}/>
                     </div>
                 </div>
             </div>

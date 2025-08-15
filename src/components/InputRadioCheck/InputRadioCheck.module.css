@@ -32,6 +32,17 @@
                 var(--mwRSSecondaryDark) 10px,
                 var(--mwRSSecondaryDark) 20px
                 );
+    background-size: 400% 100%;
+    animation: gradient-animation 50s linear infinite; 
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%; 
+  }
 }
 
 p {
