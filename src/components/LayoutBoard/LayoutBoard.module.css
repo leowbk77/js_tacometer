@@ -23,6 +23,12 @@
     width: 50%;
 }
 
+.rpmInput {
+    width: 300px;
+    display: block;
+    margin: 10% auto;
+}
+
 .bottom {
     padding: 0 5%;
     margin: 0;
@@ -92,4 +98,44 @@
 
 .needleAndScalesDiv {
     display: flex;
+}
+
+.redlineInputRangeList {
+    width: 300px;
+    margin-bottom: 0px;
+    margin-left: 0;
+
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--mwRSSecondaryDark);
+}
+
+.redlineInputRangeList::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 13px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.redlineInputRangeList::-moz-range-thumb {
+    width: 13px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+datalist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    writing-mode: horizontal-tb;
+    color: white;
+}
+
+option {
+    padding: 0;
 }

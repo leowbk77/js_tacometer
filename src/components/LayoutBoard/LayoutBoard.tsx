@@ -10,6 +10,7 @@ const LayoutBoard = () => {
     /* Criar um context futuramente */
     const [needleColor, setNeedleColor] = useState('#ff0f0f');
     const [scalesColor, setScalesColor] = useState('#aaf876');
+    const [numbersColor, setNumbersColor] = useState('#aaf876');
     const [background, setBackground] = useState('tabby');
     /*vars temporarias para mockup*/
     const [driver, setDriverName] = useState('wbk');
@@ -23,18 +24,33 @@ const LayoutBoard = () => {
     const handleRedlineChange = (e) => {
         // tratamento de erro pendente
         setRedlineVal(Number(e.target.value));
-    }
+    };
 
     const handleBackgroundChange = (val) => {
         setBackground(val)
+    };
+
+    const generateRpmDataList = () => {
+        const ranges = [];
+        const minRedLine = 7000;
+        const maxRedLine = 12000;
+        let k = 1;
+
+        for (let i = minRedLine; i <= maxRedLine; i += 1000) {
+            ranges.push(
+                <option key={k} value={i} label={String(i/1000)}/>
+            );
+            k++;
+        }
+        return(ranges);
     };
 
     return(
         <div className={style.main}>
             <div className={style.top}>
                 <div className={style.topLeft}>
-                    <Tacometer redline={redlineVal} needleAngle={rpm} needleColor={needleColor} scaleColor={scalesColor} background={background}/>
-                    <input type="range" id="rpmInput" min="-90" max={90} onChange={handleRpmChange}/>
+                    <Tacometer redline={redlineVal} needleAngle={rpm} needleColor={needleColor} numbersColor={numbersColor} scaleColor={scalesColor} background={background}/>
+                    <input type="range" id="rpmInput" className={style.rpmInput} min="-90" max={90} onChange={handleRpmChange}/>
                 </div>
                 <div className={style.topRight}>
                 </div>
@@ -58,6 +74,10 @@ const LayoutBoard = () => {
                                 <label htmlFor="scalecolor"> Escales</label>
                             </div>
                             <div className={style.configsColorPickers}>
+                                <input type="color" id="numbercolor" name="numbercolor" value={numbersColor} onChange={(e) => setNumbersColor(e.target.value)}/>
+                                <label htmlFor="needlecolor"> Numbers</label>
+                            </div>
+                            <div className={style.configsColorPickers}>
                                 <input type="color" id="needlecolor" name="needlecolor" value={needleColor} onChange={(e) => setNeedleColor(e.target.value)}/>
                                 <label htmlFor="needlecolor"> Needle</label>
                             </div>
@@ -69,9 +89,12 @@ const LayoutBoard = () => {
                         </div>
                     </div>
                     <div className={style.bottomConfigsLayout2}>
-                        <input type="number" name="redlineinput" id="redlineinput" value={redlineVal} onChange={(e) => handleRedlineChange(e)}/>
-    
-                        <input type="range" name="redlineinputrange" id="redlineinputrange" min="7000" max="12000" step="1000" value={redlineVal} onChange={(e) => handleRedlineChange(e)}/>
+                        <div>
+                            <input className={style.redlineInputRangeList} type="range" name="redlineinputrangelist" id="redlineinputrangelist" list="rpmDataList" min="7000" max="12000" step="1000" value={redlineVal} onChange={(e) => handleRedlineChange(e)}/>
+                            <datalist id="rpmDataList">
+                                {generateRpmDataList()}
+                            </datalist>
+                        </div>
                     </div>
                 </div>
             </div>
